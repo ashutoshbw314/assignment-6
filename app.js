@@ -1,5 +1,4 @@
-const imagesArea = document.querySelector('.images');
-const imagesFinder = document.querySelector("#imagesFinder");
+const imagesFinder = document.querySelector("#images-finder");
 const gallery = document.querySelector('.gallery');
 const galleryHeader = document.querySelector('.gallery-header');
 const searchInput = document.getElementById("search");
@@ -22,6 +21,11 @@ const KEY = '15674931-a9d714b6e9d654524df198e00&q';
 // show images 
 const showImages = (images) => {
   gallery.innerHTML = '';
+  galleryHeader.style.display = 'none';
+  if (!images.length) {
+    gallery.innerHTML = "<p class='message'>No images found. Please try something else.</p>";
+    return;
+  }
   // show gallery title
   galleryHeader.style.display = 'flex';
   images.forEach(image => {
@@ -34,6 +38,7 @@ const showImages = (images) => {
 }
 
 const getImages = (query) => {
+  gallery.innerHTML = `<div id="spinner" class="spinner-grow mt-5" role="status"></div>`;
   fetch(`https://pixabay.com/api/?key=${KEY}=${query}&image_type=photo&pretty=true`)
     .then(response => response.json())
     .then(data => showImages(data.hits))

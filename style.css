@@ -1,3 +1,7 @@
+h1 {
+  font-size: 3.5rem;
+}
+
 #sliders {
   height: 400px;
   width: 60%;
@@ -20,11 +24,12 @@
 
 .img-thumbnail {
   cursor: pointer;
+  transition: background-color 0.5s;
 }
 
 .added {
-  border: 2px solid #1e1743;
   border-radius: 5px;
+  background-color: #66327a;
 }
 
 img {
@@ -60,16 +65,32 @@ img {
   flex-direction: column;
 }
 
-@media (max-width: 767px) {
-  .justify-content-around.align-items-center.mt-3.gallery-header.mb-2 {
+#duration {
+  max-width: 5rem;
+  min-width: 4rem;
+}
+
+#spinner {
+  margin: 0 auto;
+}
+
+.message {
+  margin: 4rem auto;
+}
+
+@media (max-width: 1000px) {
+  #search-box {
     flex-direction: column;
+  }
+  #search-box input {
+    width: 100%;
   }
   #sliders {
     height: 300px;
     width: 90%;
   }
+  .input-group {
+    flex-direction: column;
+  }
 }
 
-#duration {
-  width: 4rem;
-}

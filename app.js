@@ -1,10 +1,14 @@
 const imagesArea = document.querySelector('.images');
+const imagesFinder = document.querySelector("#imagesFinder");
 const gallery = document.querySelector('.gallery');
 const galleryHeader = document.querySelector('.gallery-header');
 const searchInput = document.getElementById("search");
 const searchBtn = document.getElementById('search-btn');
+
+const sliderArea = document.getElementById("slider-area");
 const sliderBtn = document.getElementById('create-slider');
 const sliderContainer = document.getElementById('sliders');
+const closeSlidersButton = document.getElementById("close-sliders-btn");
 const durationInput = document.getElementById("duration");
 // selected image 
 let sliders = [];
@@ -17,7 +21,6 @@ const KEY = '15674931-a9d714b6e9d654524df198e00&q';
 
 // show images 
 const showImages = (images) => {
-  imagesArea.style.display = 'block';
   gallery.innerHTML = '';
   // show gallery title
   galleryHeader.style.display = 'flex';
@@ -66,9 +69,9 @@ const createSlider = () => {
   `;
 
   sliderContainer.appendChild(prevNext)
-  document.querySelector('.main').style.display = 'block';
+  sliderArea.style.display = 'flex';
   // hide image aria
-  imagesArea.style.display = 'none';
+  imagesFinder.style.display = 'none';
   const duration = Math.abs(+durationInput.value || 1000);
   durationInput.value = duration;
   sliders.forEach(slide => {
@@ -113,10 +116,8 @@ const changeSlide = (index) => {
 }
 
 const search = () => {
-  document.querySelector('.main').style.display = 'none';
-  clearInterval(timer);
-  getImages(searchInput.value)
   sliders.length = 0;
+  getImages(searchInput.value)
 }
 
 searchBtn.addEventListener('click', search);
@@ -128,3 +129,9 @@ searchInput.onkeydown = event => {
 sliderBtn.addEventListener('click', function () {
   createSlider()
 });
+
+closeSlidersButton.onclick = event => {
+  sliderArea.style.display = 'none';
+  imagesFinder.style.display = 'block';
+  clearInterval(timer);
+}

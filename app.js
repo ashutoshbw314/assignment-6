@@ -4,6 +4,7 @@ const galleryHeader = document.querySelector('.gallery-header');
 const searchBtn = document.getElementById('search-btn');
 const sliderBtn = document.getElementById('create-slider');
 const sliderContainer = document.getElementById('sliders');
+const durationInput = document.getElementById("duration");
 // selected image 
 let sliders = [];
 
@@ -67,7 +68,8 @@ const createSlider = () => {
   document.querySelector('.main').style.display = 'block';
   // hide image aria
   imagesArea.style.display = 'none';
-  const duration = document.getElementById('duration').value || 1000;
+  const duration = Math.abs(+durationInput.value || 1000);
+  durationInput.value = duration;
   sliders.forEach(slide => {
     let item = document.createElement('div')
     item.className = "slider-item";

@@ -24,12 +24,13 @@ h1 {
 
 .img-thumbnail {
   cursor: pointer;
-  transition: background-color 0.5s;
+  transition: border-color 0.5s;
+  border: 4px solid white;
 }
 
 .added {
   border-radius: 5px;
-  background-color: #66327a;
+  border: 4px solid lightslategray;
 }
 
 img {

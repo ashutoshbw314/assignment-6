@@ -72,7 +72,7 @@ const createSlider = () => {
   sliderArea.style.display = 'flex';
   // hide image aria
   imagesFinder.style.display = 'none';
-  const duration = Math.abs(+durationInput.value || 1000);
+  const duration = Math.abs(+durationInput.value || 1);
   durationInput.value = duration;
   sliders.forEach(slide => {
     let item = document.createElement('div')
@@ -86,7 +86,7 @@ const createSlider = () => {
   timer = setInterval(function () {
     slideIndex++;
     changeSlide(slideIndex);
-  }, duration);
+  }, duration * 1000);
 }
 
 // change slider index 
